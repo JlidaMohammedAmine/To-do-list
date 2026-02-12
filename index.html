@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — Professional To-Do App</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-circle"></div>
+        <h2>TaskFlow</h2>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-btn active" data-view="all">Dashboard</button>
+        <button class="nav-btn" data-view="today">Today</button>
+        <button class="nav-btn" data-view="upcoming">Upcoming</button>
+        <button class="nav-btn" data-view="completed">Completed</button>
+      </nav>
+
+      <div class="profile">
+        <div class="avatar"></div>
+        <div>
+          <p class="name">User</p>
+          <p class="status">Focused</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+      <header class="header centered-header">
+        <h1 id="viewTitle">My Tasks</h1>
+        <p id="viewSubtitle">Stay productive. Stay sharp.</p>
+      </header>
+
+      <section class="task-input">
+        <input type="text" id="taskInput" placeholder="What needs to be done?" />
+        <button id="addTaskBtn">Add Task</button>
+      </section>
+
+      <section class="task-list" id="taskList"></section>
+
+      <div class="empty-state" id="emptyState">
+        <div class="empty-card">
+          <div class="empty-dot"></div>
+          <h3>No tasks here</h3>
+          <p>Add tasks or switch views.</p>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Schedule Modal -->
+  <div class="modal-overlay" id="scheduleModal">
+    <div class="modal">
+      <h2>Schedule Task</h2>
+      <p>Do you want to set a reminder?</p>
+
+      <div class="modal-options">
+        <button class="modal-btn" id="noScheduleBtn">No Time (Normal Task)</button>
+
+        <div class="schedule-row">
+          <button class="modal-btn" id="chooseTimeBtn">Choose Date & Time</button>
+          <button class="modal-btn accent" id="confirmScheduleBtn" disabled>Done</button>
+        </div>
+
+        <div class="chosen-preview" id="chosenPreview">
+          <span class="preview-dot"></span>
+          <span class="preview-text" id="previewText">No date selected</span>
+        </div>
+      </div>
+
+      <button class="modal-close" id="closeModalBtn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Date/Time Picker Popover -->
+  <div class="picker-overlay" id="pickerOverlay" aria-hidden="true">
+    <div class="picker">
+      <div class="picker-head">
+        <div class="picker-title">
+          <div class="picker-chip">Reminder</div>
+          <div class="picker-subtitle">Pick a date and time</div>
+        </div>
+
+        <button class="picker-x" id="pickerCloseBtn" type="button" aria-label="Close">✕</button>
+      </div>
+
+      <div class="picker-body">
+        <div class="cal">
+          <div class="cal-nav">
+            <button class="cal-btn" id="calPrevBtn" type="button">←</button>
+            <div class="cal-month" id="calMonthLabel">Month YYYY</div>
+            <button class="cal-btn" id="calNextBtn" type="button">→</button>
+          </div>
+
+          <div class="cal-dow">
+            <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
+          </div>
+
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+
+        <div class="time">
+          <div class="time-label">Time</div>
+          <div class="time-select">
+            <button class="time-btn" id="timeBtn" type="button">
+              <span id="timeBtnText">Select time</span>
+              <span class="time-caret">▾</span>
+            </button>
+            <div class="time-menu" id="timeMenu"></div>
+          </div>
+
+          <div class="picker-summary">
+            <div class="sum-dot"></div>
+            <div class="sum-text" id="pickerSummaryText">Choose a date and time</div>
+          </div>
+
+          <button class="picker-done" id="pickerDoneBtn" type="button" disabled>Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
